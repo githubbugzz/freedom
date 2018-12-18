@@ -24,7 +24,11 @@ public class BinanceApiCallbackAdapter<T> implements Callback<T> {
 
   public void onResponse(Call<T> call, Response<T> response) {
     if (response.isSuccessful()) {
-      callback.onResponse(response.body());
+      try {
+        callback.onResponse(response.body());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     } else {
       if (response.code() == 504) {
         // HTTP 504 return code is used when the API successfully sent the message but not get a response within the timeout period.

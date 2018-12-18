@@ -2,6 +2,8 @@ package com.binance.api.client;
 
 import com.binance.api.client.exception.BinanceApiException;
 
+import java.io.IOException;
+
 /**
  * BinanceApiCallback is a functional interface used together with the BinanceApiAsyncClient to provide a non-blocking REST client.
  *
@@ -15,5 +17,5 @@ public interface BinanceApiCallback<T> {
      * @param response the expected response object
      * @throws BinanceApiException if it is not possible to obtain the expected response object (e.g. incorrect API-KEY).
      */
-    void onResponse(T response) throws BinanceApiException;
+    void onResponse(T response) throws BinanceApiException, IOException;
 }
